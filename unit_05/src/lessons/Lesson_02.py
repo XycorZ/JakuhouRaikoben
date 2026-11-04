@@ -1,9 +1,9 @@
 
 def reverse(str_to_reverse):
-    raise NotImplementedError("You have not implemented the reverse function")
+    return(str_to_reverse[::-1])
 
 def get_character(string_one, i):
-    raise NotImplementedError("You have not implemented the get_character function")
+    return(string_one[i-1])   
 
 if __name__ == "__main__":
     print(reverse("This is a string")) # prints "gnirts a si sihT"

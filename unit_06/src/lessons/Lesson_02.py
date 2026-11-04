@@ -1,5 +1,10 @@
+import copy
+
 def change_list(my_list):
-    pass
+    my_list1 = copy.deepcopy(my_list)
+    my_list1[1] = 'Banana'
+    my_list1.sort()
+    return my_list1
 
 if __name__ == "__main__":
     fruit_list = ["Pear", "Orange", "Peach", "Apple"]

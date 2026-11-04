@@ -56,4 +56,4 @@ def find_root(x, power, epsilon=0.01):
 
 if __name__ == "__main__":
     # add the line of code here
-    pass
+    help(find_root)

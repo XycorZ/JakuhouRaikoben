@@ -1,10 +1,12 @@
 import copy
 
 def update_list_item_one(items, x):
-  pass
+  items[0] = x
 
 def new_list_item_one(items, x):
-  pass
+    new_list = items.copy()
+    update_list_item_one(new_list,x)
+    return new_list
 
 if __name__ == "__main__":
     list_one = [1,2,3,4]

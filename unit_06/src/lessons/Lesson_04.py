@@ -1,5 +1,5 @@
 def items_in_both(a,b):
-    pass
+    return a.intersection(b)
 
 if __name__ == "__main__":
     # main

@@ -4,17 +4,33 @@ import random
 def get_user_guess():
     """ gets the user input"""
     # remove the following line and write the function here
-    pass
+    valid = False
+
+    while not valid:
+        try:
+            guess = input("Please enter a whole number between 1 and 10 or q to quit\n")
+            if guess == "q" or 0<=int(guess)<=10:
+                valid = True
+                return guess
+            else:
+                print("Invalid input\n")
+        except ValueError:
+            print("Invalid input\n") 
 
 
 def print_feedback(no_guesses, max_guesses, secret_num):
     """ prints the end feedback """
     # remove the following line and write the function here
-    pass
+    if no_guesses>max_guesses:
+        print ("Sorry, better luck next time.")
+    else:
+        print(f"Well done, you used {no_guesses}/{max_guesses} guesses to guess the secret number {secret_num}.")
+
+    
 
 
 def main():
-    secret_num = random.randint(1, 10)
+    secret_num = 4 #random.randint(1, 10)
     keep_going = True
     max_guesses = 3
     no_guesses = 0
@@ -22,13 +38,19 @@ def main():
     while keep_going:
         if no_guesses < max_guesses:
             guess = get_user_guess()
-            if guess == "q":
-                keep_going = False
-            else:
-                if int(guess) == secret_num:
+            #if guess == "q":
+            #    keep_going = False
+            #else:
+            try:
+                if guess == "q":
+                    keep_going = False
+                elif int(guess) == secret_num:
                     keep_going = False
                 else:
                     print("Incorrect, please try again\n")
+            except ValueError:
+                print("Invalid input\n")
+
         else:
             keep_going = False
 
