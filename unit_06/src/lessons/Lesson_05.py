@@ -1,6 +1,5 @@
 def add_from_list(d, items_to_add):
-    d[items_to_add[0]] = items_to_add[1]
-    return d
+    return d.update(items_to_add)
 
 if __name__ == "__main__":
     test_dict = {
