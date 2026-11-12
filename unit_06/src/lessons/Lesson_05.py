@@ -1,5 +1,10 @@
 def add_from_list(d, items_to_add):
+<<<<<<< Updated upstream
     return d.update(items_to_add)
+=======
+    d.update(items_to_add)
+    return d
+>>>>>>> Stashed changes
 
 if __name__ == "__main__":
     test_dict = {
