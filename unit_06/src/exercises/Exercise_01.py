@@ -1,7 +1,10 @@
 def find_max_row(grid):
     # HINT: https://datagy.io/python-index-of-max-item-list/
-    pass
-
+    total=[]
+    for x in grid:
+        total.append(sum(x))
+    return total.index(max(total))+1
+    
 def print_grid(grid):
     for row in grid:
         print(row)

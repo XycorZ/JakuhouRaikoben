@@ -1,40 +1,43 @@
 # Address Book Exercise
 def look_up(add_book, name):
-    """returns the corresponding address (value) for name (key)"""
-    pass
+    # """returns the corresponding address (value) for name (key)"""
+    #print (add_book.get(name))
+    return add_book.get(name)
+
 
 def add(add_book, name, address):
-    """adds a name/address (key/value) to the address book"""
+    # """adds a name/address (key/value) to the address book"""
+    #print (add_book.update({name:address}))
+    return add_book.update({name:address})
     pass
 
 def edit(add_book, name, new_address):
-    """edits the address entry for name (key) with a new address (value)"""
+    # """edits the address entry for name (key) with a new address (value)"""
+    #print(add_book.update({name:new_address}))
+    return add_book.update({name:new_address})
     pass
 
 def delete(add_book, name):
-    """deletes name (key) and the address (value) from the addressbook"""
+    # """deletes name (key) and the address (value) from the addressbook"""
+    #print(add_book.pop(name))
+    return add_book.pop(name)
     pass
 
 def list_all(add_book):
-    """prints out all the addresses
-
-    e.g.
-
-    address_book = {
-      "Sam": "MS308, Markeaton St, Derby",
-      "Sherlock": "221B Baker Street, London"
-    }
-
-    would print out:
-
-    Name: Sam
-    Address: MS308, Markeaton St, Derby
-
-    Name: Sherlock
-    Address: 221B Baker Street, London
-
-    Make sure you include a new line after the address.
-    """
+    # e.g.
+    # address_book = {
+    #   "Sam": "MS308, Markeaton St, Derby",
+    #   "Sherlock": "221B Baker Street, London"
+    # }
+    # would print out:
+    # Name: Sam
+    # Address: MS308, Markeaton St, Derby
+    # Name: Sherlock
+    # Address: 221B Baker Street, London
+    # Make sure you include a new line after the address.
+    # """
+    for x,y in add_book.items():
+        print(f"Name: {x}\nAddress: {y}\n")
     pass
 
 def main():
