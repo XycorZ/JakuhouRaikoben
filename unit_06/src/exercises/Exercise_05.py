@@ -9,19 +9,19 @@ def add(add_book, name, address):
     # """adds a name/address (key/value) to the address book"""
     #print (add_book.update({name:address}))
     return add_book.update({name:address})
-    pass
+
 
 def edit(add_book, name, new_address):
     # """edits the address entry for name (key) with a new address (value)"""
     #print(add_book.update({name:new_address}))
     return add_book.update({name:new_address})
-    pass
+
 
 def delete(add_book, name):
     # """deletes name (key) and the address (value) from the addressbook"""
     #print(add_book.pop(name))
     return add_book.pop(name)
-    pass
+
 
 def list_all(add_book):
     # e.g.
@@ -38,7 +38,7 @@ def list_all(add_book):
     # """
     for x,y in add_book.items():
         print(f"Name: {x}\nAddress: {y}\n")
-    pass
+
 
 def main():
     # define empty address book
