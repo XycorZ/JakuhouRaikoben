@@ -46,7 +46,6 @@ def advanced_main():
     
     # #sorts and packs the bins. (//TESTING NOTES: WORKS AS INTENDED)  
     print("The count in the given ranges is:\n")
-    print(rand_num_list)
     for x in ranges_dict:
         sorter=x.split("..")
         sorter=list(map(int, sorter))
