@@ -1,14 +1,20 @@
+import os
+import base64
+
 def get_current_working_directory():
-  pass
+  return os.getcwd()
 
 def encode_string(str_to_encode):
-  """ Encodes a string using base64"""
-  pass
+  based = base64.b64encode(str_to_encode.encode("ascii"))
+  unbased = based.decode("ascii")
+  return unbased
 
 def decode_string(base64_str_to_decode):
-  """ Decodes a string encoded in base64"""
-  pass
-  
+  unbased = base64.b64decode(base64_str_to_decode)
+  based = unbased.decode("ascii")
+  return based
+
+
 
 if __name__ == "__main__":
   print(get_current_working_directory())
