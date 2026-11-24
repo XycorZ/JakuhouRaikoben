@@ -1,34 +1,23 @@
 import sys
+import collections
 
 def load_file(filename):
   with open(filename,"r") as f:
-    lines = f.readlines()
-    pure_letters = [] 
-    accept = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    
-    for x in lines:
-      stripped = x.strip()
-      split = stripped.split()
-      for y in split:
-        for z in y:
-          if z in accept:
-            pure_letters.append(z)
-          elif z not in accept:
-            y.strip(z)
-    
-    return pure_letters
-
-    # really memory inefficient. takes 386 bytes to store the array of letters.
-    # try optimize this for better. Mo 3:34am 18//11//2026 
-
-    
-
-
-    
-
+    lines = f.read()
+    return lines  
+  
 def count_letters(filename):
   words = load_file(filename)
-  pass
+  words_count = collections.Counter(words)
+
+  words_count = dict(sorted(words_count.items(), key = lambda x: x[0]))
+
+  print("The count of the letters for the file is:\n")
+  for k,v in words_count.items():
+    if k.isalpha() == False:
+      del k
+    else:
+      print(f"{k}: {v}") 
 
     
 if __name__ == "__main__":
