@@ -7,5 +7,7 @@
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,
     "chat.disableAIFeatures": true,
-    "workbench.settings.showAISearchToggle": false
+    "workbench.settings.showAISearchToggle": false,
+    "python-envs.defaultEnvManager": "ms-python.python:conda",
+    "python-envs.defaultPackageManager": "ms-python.python:conda"
 }

@@ -1,3 +1,5 @@
+import copy
+
 def load_grid(filename):
   with open(filename, "r") as f:
     lines = f.readlines()
@@ -11,7 +13,6 @@ def load_grid(filename):
     for y in combined:
       for z in y:
         pure.append(list(map(int,z))) #writes the files into a 2d array
-
     return pure
 
 def max_num_in_rows(grid, num_digits):
@@ -22,43 +23,72 @@ def max_num_in_rows(grid, num_digits):
   return int(number)
 
 def max_num_adv(grid, num_digits):
+  check4Max = []
+  rows = len(grid)
+  coloumns = len(grid[0])
+  total_diagonals = rows + coloumns - 1 
+
   #left to right
-  Left2Right = max(grid)
-  number_L2R = ''.join(map(str,Left2Right[0:num_digits])) #same as max_num_in_rows
-  number_L2R = int(number_L2R)
+  Left2Right = max_num_in_rows(grid,num_digits)
+  check4Max.append(Left2Right)
 
   #diagonally top-left to bottom-right
-  coloums = len(grid[0])
-  rows = len(grid)
-  total_diagonals = (coloums + rows) - 1
+  grid1 = copy.deepcopy(grid)
   diagonals_TL2BR = []
-  
-  TLeft2BRight = max(grid)
-  number_TL2BR = ''.join(map(str,TLeft2BRight[0:num_digits])) #same in max_num_in_rows
-  number_TL2BR = int(number_TL2BR)
+   
+  for x in range(total_diagonals):
+    if x < rows:
+      z = 0
+    else:
+      z = x - rows + 1
+
+    temp_diagonal1 = []
+    for y in range(z, x - z + 1):
+      temp_diagonal1.append(grid1[x - y][y])
+    diagonals_TL2BR.append(temp_diagonal1)
+ 
+  TLeft2BRight = max_num_in_rows(diagonals_TL2BR,num_digits)
+  check4Max.append(int(TLeft2BRight))
 
   #diagonally bottom-left to top-right
+  grid2 = copy.deepcopy(grid)
+  diagonals_BL2TR = []
   
+  #rotating the matrix 180 degrees
+  for y in range(0,rows):
+    start_of_row=0
+    end_of_row=len(grid2)-1
 
-  BLeft2TRight = max(grid)
-  number_BL2TR = ''.join(map(str,BLeft2TRight[0:num_digits])) #same in max_num_in_rows
-  number_BL2TR = int(number_BL2TR)
+    while(start_of_row<end_of_row):
+      grid2[y][start_of_row], grid2[y][end_of_row] = grid2[y][end_of_row], grid2[y][start_of_row]
+      start_of_row+=1
+      end_of_row-=1
 
+  for x in range(total_diagonals):
+    if x < rows:
+      z = 0
+    else:
+      z = x - rows + 1
 
-    #top to bottom
-  for x in range(len(grid)-1): # function to transpose the matrix
-    for y in range(x+1,len(grid)):
-      grid[x][y], grid[y][x] = grid[y][x], grid [x][y]
+    temp_diagonal2 = []
+    for y in range(z, x - z + 1):
+      temp_diagonal2.append(grid2[y][x - y])
+    diagonals_BL2TR.append(temp_diagonal2)
+ 
+  BLeft2TRight = max_num_in_rows(diagonals_BL2TR,num_digits)
+  check4Max.append(int(BLeft2TRight))
 
-  Top2Bottom = max(grid)
-  number_T2B = ''.join(map(str,Top2Bottom[0:num_digits])) #same in max_num_in_rows
-  number_T2B = int(number_T2B)
+  #top to bottom
+  for x in range(rows-1): # function to transpose the matrix
+    for y in range(x+1,rows):
+      grid[x][y], grid[y][x] = grid[y][x], grid[x][y]
 
+  Top2Bottom = max_num_in_rows(grid,num_digits)
+  check4Max.append(Top2Bottom)
 
-  #array of the largest n-digit number from the 4 ways of transposing the matrix
+  #kargest n-digit number from the 4 ways of transposing the matrix
   # then returning the largest one  
-  check4Max = [number_TL2BR,number_BL2TR]
-
+  
   return max(check4Max)
 
 def print_grid(grid):

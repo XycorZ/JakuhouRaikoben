@@ -1,30 +1,23 @@
 import json
 
-
 def add_item(menu_dict, name, price):
-  menu_dict.update({name:str(price)})
-
+  pos = str(menu_dict['next_id'])
+  menu_dict['menu'].update({pos:{"Name":name,"Price":float(price)}})
+  menu_dict['next_id']+=1
 
 def load(filename):
   with open(filename,"r") as f:
-    file_content = json.load(f)
-    
-    f.close()
-    return file_content
-    
+    loaded_file = json.load(f)
+    return loaded_file
 
 def save(filename, menu_dict):
-  with open(filename,"w") as f:
-    for k,v in menu_dict.items():
-      f.write(f"{k}:{v}\n")
-
-    f.close()
+  with open(filename,"a") as f:
+    f.write(json.dumps(menu_dict))
 
 def list_options():
   print("Option 1: List Menu")
   print("Option 2: Add Menu Item")
   print("Option 3: Quit")
-
 
 def print_menu(menu_dict):
   print("\nMENU")
@@ -33,7 +26,6 @@ def print_menu(menu_dict):
     print(f"Item {key}\n")
     print(f"Name: {value['Name']}")
     print(f"Price: {value['Price']}\n")
-
 
 def main():
   filename = "./unit_07/src/exercises/Exercise_02_menu.json"
